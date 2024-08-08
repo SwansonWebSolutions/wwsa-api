@@ -8,7 +8,10 @@ module.exports = {
       colors: {
         'soft-green': ' #00A67E',
         'subtle-blue': '#003366',
-        'warm-coral': '#FF6F61',
+        'warm-coral': '#FA1E3A',
+      },
+      textShadow: {
+        'default': '2px 2px 4px rgba(0, 0, 0, 0.5)',
       },
       keyframes: {
         slideInRight: {
@@ -46,8 +49,20 @@ module.exports = {
       boxShadow : {
         'black': '2px 10px 10px rgba(0, 0, 0, 0.75)',
         'full-black': '35px 35px 10px -5px rgba(0, 0, 0)',
-      }
+      },
+      fontFamily: {
+        parisienne: ['"Parisienne"', 'cursive'],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '2px 2px 10px rgba(0, 0, 0, 0.85)',
+        },
+      };
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+  ],
 }

@@ -7,10 +7,10 @@ function Layout({children}) {
   return (
     <div className="bg-slate-200 bg-opacity-90 flex flex-col px-0 text-black">
       <Header/>
+      <Navbar />
        <div className="flex flex-col min-h-screen">
         <div className='flex flex-col'>
-          <Navbar />
-          <div className="min-h-screen w-full mb-[5%] lg:px-[8%] xl:px-[12%]">
+          <div className="min-h-screen w-full lg:px-[8%] xl:px-[12%]">
               {children}
           </div>
         </div>

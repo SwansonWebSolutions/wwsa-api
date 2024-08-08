@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Parisienne';
+    src: url('./fonts/Parisienne-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }

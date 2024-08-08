@@ -24,7 +24,7 @@ function Home() {
         <img id="banner" className="w-full h-auto" alt="Banner" />
         <div className="absolute flex flex-col items-center">
           <h1 className='text-white text-3xl lg:text-5xl font-bold animate-slideInRight'>Shipping made easy...</h1>
-          <div className='border-b-4 border-soft-green animate-fadeInBorder mt-2 w-full'></div>
+          <div className='border-b-4 border-warm-coral animate-fadeInBorder mt-2 w-full'></div>
         </div>
       </div>
       <div className='flex flex-col lg:flex-row mx-[3%] items-center'>
@@ -37,7 +37,7 @@ function Home() {
       <div className="px-[15%]">
         <div className='bg-slate-700 text-white flex flex-col justify-center items-center gap-2 p-2 rounded-md shadow-black'>
           <span className="lg:text-2xl font-light text-center">Ready to explore your international shipping options with a live expert, call now?</span>
-          <a href="tel:+18189178941" className="flex gap-2 justify-center items-center bg-soft-green text-shadow-black py-2 px-4 font-semibold rounded-md border-solid border">
+          <a href="tel:+18189178941" className="flex gap-2 justify-center items-center bg-warm-coral text-shadow-black py-2 px-4 font-semibold rounded-md border-solid border">
             <FontAwesomeIcon icon={faPhone} className="size-4"/>
             <span>+1 (818) 917-8941</span>
           </a>
@@ -52,6 +52,7 @@ function Home() {
         <ServiceCard number="03" title="Service 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." icon={faPhone}/>
         <ServiceCard number="04" title="Service 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." icon={faPhone}/>
         <ServiceCard number="05" title="Service 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." icon={faPhone}/>
+        <ServiceCard number="06" title="Service 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." icon={faPhone}/>
       </div>
       <EmailForm />
     </div>
