@@ -9,17 +9,24 @@ const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.en
 dotenv.config({ path: envFile });
 
 const port = process.env.PORT;
+const domain = process.env.DOMAIN;
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-app.use('/api/email', emailRouter);
+app.use(cors(corsOptions));
+
+app.use('/api', emailRouter);
 
 console.log(`Using ${envFile}`);
+console.log("Domain: ", domain);
 
 app.get('/', (req, res) => {
-    res.json({ message: "response from server"});
-});  
+    res.status(200).send('ok');
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);  
