@@ -31,7 +31,7 @@ function EmailForm() {
   return (
     <div
       ref={formRef}
-      className="flex flex-col lg:flex-row gap-4 bg-subtle-blue text-white p-4 m-8 shadow-full-black rounded-md"
+      className="flex flex-col lg:flex-row gap-4 bg-subtle-blue text-white p-4 shadow-full-black rounded-md"
     >
       <div className='flex flex-col gap-2 lg:w-[40%] text-white'>
         <h1 className='text-3xl'>Let's talk about your shipping needs!</h1>

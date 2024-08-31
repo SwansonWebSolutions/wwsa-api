@@ -1,63 +1,78 @@
-import {useState} from 'react'
-import { Link } from 'react-router-dom'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome, faBookAtlas, faHandsHelping, faClipboard, faCaretDown} from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const toggle = () => setIsOpen(!isOpen)
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const toggleServices = () => {
+    setIsServicesOpen(!isServicesOpen);
+  };
+
+  const navigateToService = (name) => {
+    return navigate(name);
+  };
+
   return (
-    <div className='bg-white flex items-start lg:text-xl border-solid lg:border-y-4 border-gray-300 md:px-[6%] lg:px-[8%] xl:px-[12%]'>
-        <Link to="/" className='w-full p-1 lg:py-2 flex flex-col justify-center items-center lg:flex-row lg:items-center lg:gap-2 hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out'>
-            <FontAwesomeIcon icon={faHome} className='size-8 lg:size-6'/>
-            <span className='max-lg:text-sm'>Home</span>
-        </Link>
-        <Link to="/about" className='w-full p-1  lg:py-2 flex flex-col justify-center items-center lg:flex-row  lg:items-center lg:gap-2 hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out'>
-          <FontAwesomeIcon icon={faBookAtlas} className='size-8 lg:size-6'/>
-          <span className='max-lg:text-sm'>About</span>
-        </Link>
-        <div className="w-full relative flex flex-col">
-          <div
-            onClick={toggle}
-            className="p-1 lg:py-2 flex flex-col justify-center items-center lg:flex-row lg:items-center lg:gap-2 hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out cursor-pointer"
+    <nav className="relative">
+      {/* Hamburger icon - only visible on mobile */}
+      <div className="md:hidden px-4 z-50" onClick={toggleMenu}>
+        {isOpen ? (
+          <FontAwesomeIcon icon={faTimes} className="text-2xl cursor-pointer text-white" />
+        ) : (
+          <FontAwesomeIcon icon={faBars} className="text-2xl cursor-pointer text-white" />
+        )}
+      </div>
+
+      {/* Menu links */}
+      <div
+        className={`${
+          isOpen ? 'flex' : 'hidden'
+        } flex-col md:flex md:flex-row md:justify-center md:items-center gap-4 fixed md:static top-0 left-0 w-full h-full md:h-auto md:w-auto bg-gray-800 md:bg-transparent p-8 md:p-0 text-4xl md:text-2xl font-normal`}
+      >
+        <div className="relative text-white md:ml-4 md:p-0 border-solid border-light-blue border-b-0 hover:lg:border-b-2 duration-200 ease-in">
+          <button onClick={toggleMenu} className='md:hidden w-full text-end'>
+            <FontAwesomeIcon icon={faTimes} className="mr-2" />
+          </button>
+          <button onClick={toggleServices} className="flex items-center">
+            Services <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
+          </button>
+          {/* Dropdown Menu */}
+          <ul
+            className={`${
+              isServicesOpen ? 'block' : 'hidden'
+            } absolute mt-2 md:mt-0 text-2xl bg-opacity-75 border-solid border-y-2 border-black bg-gray-700 md:bg-transparent w-full md:w-auto`}
           >
-            <FontAwesomeIcon icon={faHandsHelping} className="text-lg lg:text-xl" />
-            <p className="flex items-center lg:gap-1 lg:pr-2">
-              <span className="text-sm lg:text-base">Services</span>
-              <FontAwesomeIcon icon={faCaretDown} className="text-sm lg:text-base" />
-            </p>
-          </div>
-          {isOpen && (
-            <div className="absolute top-full left-1/4 mt-2 bg-white shadow-lg z-20 italic text-md text-black flex flex-col p-2 rounded-lg">
-              <Link
-                to="/services/service1"
-                className="w-full px-4 py-2 cursor-pointer hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out"
-              >
-                <span className="text-sm lg:text-base">Service 1</span>
-              </Link>
-              <Link
-                to="/services/service2"
-                className="w-full px-4 py-2 cursor-pointer hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out"
-              >
-                <span className="text-sm lg:text-base">Service 2</span>
-              </Link>
-              <Link
-                to="/services/service3"
-                className="w-full px-4 py-2 cursor-pointer hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out"
-              >
-                <span className="text-sm lg:text-base">Service 3</span>
-              </Link>
-            </div>
-          )}
+            <li
+              onClick={() => navigateToService('/service-1')}
+              className="p-2 flex items-center hover:bg-gray-600 hover:cursor-pointer"
+            >
+              Example Service
+            </li>
+          </ul>
         </div>
-        
-        <Link to="/contact" className='w-full p-1  lg:py-2 flex flex-col justify-center items-center lg:flex-row lg:items-center lg:gap-2 hover:bg-warm-coral hover:bg-opacity-60 duration-200 ease-in-out'>
-          <FontAwesomeIcon icon={faClipboard} className='size-8 lg:size-6'/>
-          <span className='max-lg:text-sm '>Contact</span>
+        <Link
+          to="/about"
+          className="text-white border-solid border-light-blue border-b-0 hover:lg:border-b-2 hover:cursor-pointer duration-200 ease-in"
+        >
+          About
         </Link>
-    </div>
-  )
+        <Link
+          to="/contact"
+          className="text-white md:bg-light-blue md:border-solid md:border md:border-light-blue md:px-4 text-shadow md:py-2 md:rounded-md md:ml-4 border-solid border-0 md:border-1 border-light-blue hover:md:bg-transparent duration-200 ease-in"
+        >
+          Contact
+        </Link>
+      </div>
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

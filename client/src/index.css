@@ -8,3 +8,9 @@
     font-weight: normal;
     font-style: normal;
   }
+
+@font-face {
+  src: url('./fonts/RubikMonoOne-Regular.ttf') format('truetype');
+  font-family: 'Rubik';
+  font-style: normal;
+}

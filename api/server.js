@@ -21,9 +21,6 @@ app.use(cors(corsOptions));
 
 app.use('/api', emailRouter);
 
-console.log(`Using ${envFile}`);
-console.log("Domain: ", domain);
-
 app.get('/', (req, res) => {
     res.status(200).send('ok');
 });

@@ -27,16 +27,19 @@ const transporter = nodemailer.createTransport({
  // Email sending endpoint.
  router.post('/send-email', async (req, res) => {
     try {
-        const { firstName, lastName, phone, company, title, email, message } = req.body; // Destructure and retrieve data from request body.
+        console.log("POST Email request: RECIEVED");
+        const { firstName, lastName, phone, company, title, email, message } = req.body.formData; // Destructure and retrieve data from request body.
+        const selectedOptions = req.body.selectedOptions.join(", "); // Retrieve selected options.
         let  name = `${firstName} ${lastName}`; // Combine first and last name.
- 
+
         // Validate required fields.
-        if (!firstName || !firstName || !phone || !company || !title || !email || !message) {
+        if (!firstName || !lastName || !phone || !company || !title || !email || !message || !selectedOptions) {
             return res.status(400).json({ status: 'error', message: 'Missing required fields' });
         }
+        console.log("Data Validated");
 
         // Send two emails. One with the inquiry details and another with a confirmation message.
-        var msg = `Name: ${name}\nPhone: ${phone}\nCompany: ${company}\nTitle: ${title}\nEmail: ${email}\nMessage: ${message}`;
+        var msg = `Name: ${name}\nPhone: ${phone}\nCompany: ${company}\nTitle: ${title}\nEmail: ${email}\nSelected Services: ${selectedOptions}\nMessage: ${message}`;
         // Prepare the email message options.
         const inquiryMailOptions = {
             from: process.env.SENDER_EMAIL, // Sender's email address.
@@ -44,7 +47,8 @@ const transporter = nodemailer.createTransport({
             subject: "New Client Inquiry", // Subject line.
             text: msg // Plaintext body.
         };
- 
+
+        console.log("Sending Email's");
         // Send email and log the response.
         const inquiry = await transporter.sendMail(inquiryMailOptions);
         // Add error handling

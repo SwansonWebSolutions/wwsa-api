@@ -6,12 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'soft-green': ' #00A67E',
         'subtle-blue': '#003366',
         'warm-coral': '#FA1E3A',
+        'light-blue': 'rgb(146,197,255)',
       },
       textShadow: {
         'default': '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        'black': '2px 2px 4px rgba(0, 0, 0, 0.85)',
       },
       keyframes: {
         slideInRight: {
@@ -52,6 +53,7 @@ module.exports = {
       },
       fontFamily: {
         parisienne: ['"Parisienne"', 'cursive'],
+        rubik: ['"Rubik"', 'sans-serif'],
       },
     },
   },
