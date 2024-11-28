@@ -1,28 +1,23 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleServices = () => {
-    setIsServicesOpen(!isServicesOpen);
-  };
-
-  const navigateToService = (name) => {
-    return navigate(name);
+  // Close the menu when a link is clicked on mobile
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
   return (
     <nav className="relative">
-      {/* Hamburger icon - only visible on mobile */}
+      {/* Hamburger icon for mobile */}
       <div className="md:hidden px-4 z-50" onClick={toggleMenu}>
         {isOpen ? (
           <FontAwesomeIcon icon={faTimes} className="text-2xl cursor-pointer text-white" />
@@ -41,32 +36,32 @@ function Navbar() {
           <button onClick={toggleMenu} className='md:hidden w-full text-end'>
             <FontAwesomeIcon icon={faTimes} className="mr-2" />
           </button>
-          <button onClick={toggleServices} className="flex items-center">
-            Services <FontAwesomeIcon icon={faChevronDown} className="ml-2" />
-          </button>
-          {/* Dropdown Menu */}
-          <ul
-            className={`${
-              isServicesOpen ? 'block' : 'hidden'
-            } absolute mt-2 md:mt-0 text-2xl bg-opacity-75 border-solid border-y-2 border-black bg-gray-700 md:bg-transparent w-full md:w-auto`}
-          >
-            <li
-              onClick={() => navigateToService('/service-1')}
-              className="p-2 flex items-center hover:bg-gray-600 hover:cursor-pointer"
-            >
-              Example Service
-            </li>
-          </ul>
         </div>
+        <Link
+          to="/"
+          className="text-white border-solid border-light-blue border-b-0 hover:lg:border-b-2 hover:cursor-pointer duration-200 ease-in"
+          onClick={closeMenu}
+        >
+          Home
+        </Link>
         <Link
           to="/about"
           className="text-white border-solid border-light-blue border-b-0 hover:lg:border-b-2 hover:cursor-pointer duration-200 ease-in"
+          onClick={closeMenu}
         >
           About
         </Link>
         <Link
+          to="/service-1"
+          className="text-white border-solid border-light-blue border-b-0 hover:lg:border-b-2 hover:cursor-pointer duration-200 ease-in"
+          onClick={closeMenu}
+        >
+          Services
+        </Link>
+        <Link
           to="/contact"
-          className="text-white md:bg-light-blue md:border-solid md:border md:border-light-blue md:px-4 text-shadow md:py-2 md:rounded-md md:ml-4 border-solid border-0 md:border-1 border-light-blue hover:md:bg-transparent duration-200 ease-in"
+          className="text-white md:bg-transparent md:border-solid md:border md:border-light-blue md:px-4 text-shadow md:py-2 md:rounded-md md:ml-4 border-solid border-0 md:border-1 border-light-blue hover:md:bg-light-blue duration-200 ease-in"
+          onClick={closeMenu}
         >
           Contact
         </Link>

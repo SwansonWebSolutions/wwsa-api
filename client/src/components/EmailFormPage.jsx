@@ -100,7 +100,7 @@ function EmailFormPage() {
       <div className="flex flex-col gap-2 lg:w-[40%] text-white">
         <h1 className="text-3xl">Let's talk about your shipping needs!</h1>
         <span className="text-lg font-thin">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Complete our service intake form to streamline your logistics and distribution needs. Provide key details about your shipment, delivery preferences, and any special requirements. Our team will review your request and respond promptly to ensure efficient, reliable transportation solutions tailored to your business.
         </span>
       </div>
 

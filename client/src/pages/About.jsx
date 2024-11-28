@@ -77,7 +77,7 @@ function About() {
     <h2 className="text-3xl text-subtle-blue font-semibold font-rubik mt-16 text-center">Executive Team</h2>
     
     <div className="mt-8 flex flex-col items-center bg-light-blue p-6 rounded-lg shadow-lg">
-      <h2 className="text-4xl font-bold font-rubik text-dark-blue">Mark Jackson</h2>
+      <h2 className="text-4xl text-center font-bold font-rubik text-dark-blue">Mark Jackson</h2>
       <span className="text-2xl italic text-gray-700">Founder and CEO</span>
     </div>
     </div>
