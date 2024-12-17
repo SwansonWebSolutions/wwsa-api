@@ -25,21 +25,19 @@ const transporter = nodemailer.createTransport({
  
  
  // Email sending endpoint.
- router.post('/send-email', async (req, res) => {
+ router.post('/send-message', async (req, res) => {
     try {
         console.log("POST Email request: RECIEVED");
-        const { firstName, lastName, phone, company, title, email, message } = req.body.formData; // Destructure and retrieve data from request body.
-        const selectedOptions = req.body.selectedOptions.join(", "); // Retrieve selected options.
-        let  name = `${firstName} ${lastName}`; // Combine first and last name.
-
+        const { fullname, phone, email, message } = req.body.formData; // Destructure and retrieve data from request body.
+        
         // Validate required fields.
-        if (!firstName || !lastName || !phone || !company || !title || !email || !message || !selectedOptions) {
+        if (!fullname || !phone || !email || !message) {
             return res.status(400).json({ status: 'error', message: 'Missing required fields' });
         }
         console.log("Data Validated");
 
         // Send two emails. One with the inquiry details and another with a confirmation message.
-        var msg = `Name: ${name}\nPhone: ${phone}\nCompany: ${company}\nTitle: ${title}\nEmail: ${email}\nSelected Services: ${selectedOptions}\nMessage: ${message}`;
+        var msg = `Name: ${fullname}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`;
         // Prepare the email message options.
         const inquiryMailOptions = {
             from: process.env.SENDER_EMAIL, // Sender's email address.
@@ -59,7 +57,7 @@ const transporter = nodemailer.createTransport({
             from: `"World Wide Strategic Alliances" ${process.env.SENDER_EMAIL}`, // Sender's email address.
             to: email, // Recipient's name and email address.
             subject: "Inquiry Confirmation", // Subject line.
-            text: `Hello ${name},\n\nThank you for your inquiry. We have recieved your inquiry and will get back to you as soon as possible.\n\nBest Regards,\n\nMark Jackson\n\nmark@wws-alliances.org\n\nWorld Wide Strategic Alliances` // Plaintext body.
+            text: `Hello ${fullname},\n\nThank you for your inquiry. We have recieved your inquiry and will get back to you as soon as possible.\n\nBest Regards,\n\nMark Jackson\n\nmark@wws-alliances.org\n\nWorld Wide Strategic Alliances` // Plaintext body.
         };
         const confirmation = await transporter.sendMail(confirmationMailOptions);
         console.log('Email sent:', confirmation.response);

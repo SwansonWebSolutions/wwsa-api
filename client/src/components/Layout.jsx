@@ -1,21 +1,23 @@
-import React from 'react'
-import Footer from './Footer'
-import Header from './Header'
+import React from 'react';
+import Footer from './Footer';
+import Header from './Header';
 
-function Layout({children}) {
+function Layout({ children }) {
   return (
-    <div className="relative bg-slate-200 bg-opacity-90 flex flex-col text-black">
-      <Header/>
-      <div className="flex flex-col min-h-screen">
-        <div className='flex flex-col'>
-          <div className="min-h-screen w-full">
-              {children}
-          </div>
-        </div>
-        <Footer />
-      </div>
+    <div className="min-h-screen flex flex-col">
+      {/* Header with dark blue background */}
+      <Header />
+
+      {/* Main Content Grid */}
+      <main className="bg-white text-black">
+        {children}
+      </main>
+
+      {/* Footer with dark blue background */}
+      <Footer  />
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
+

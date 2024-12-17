@@ -21,10 +21,6 @@ app.use(cors(corsOptions));
 
 app.use('/api', emailRouter);
 
-app.get('/', (req, res) => {
-    res.status(200).send('ok');
-});
-
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);  
 });

@@ -6,9 +6,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'subtle-blue': '#003366',
-        'warm-coral': '#FA1E3A',
+        'navy-blue': '#000030',
+        'gray': '#888888',
+        'light-gray': '#f5f5f5',
         'light-blue': 'rgb(146,197,255)',
+        'bright-yellow': 'rgb(255,255,0)',
       },
       textShadow: {
         'default': '2px 2px 4px rgba(0, 0, 0, 0.5)',
@@ -36,13 +38,14 @@ module.exports = {
         fadeIn: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1},
-        }
+        },
       },
       animation: {
         slideInRight: 'slideInRight 1s ease-out forwards',
         slideInLeft: 'slideInLeft 1s ease-out forwards',
         fadeInBorder: 'fadeInBorder 1s ease-out forwards 0s',
         fade: 'fadeIn 1s ease-out forwards',
+        slideRight: 'slideInRight 1s ease-out forwards',
       },
       textShadow: {
         'black': '2px 10px 10px rgba(0, 0, 0, 0.75)',
@@ -50,6 +53,7 @@ module.exports = {
       boxShadow : {
         'black': '2px 10px 10px rgba(0, 0, 0, 0.75)',
         'full-black': '35px 35px 10px -5px rgba(0, 0, 0)',
+        'bottom-black': '0px 10px 10px -5px rgba(0, 0, 0)',
       },
       fontFamily: {
         parisienne: ['"Parisienne"', 'cursive'],
