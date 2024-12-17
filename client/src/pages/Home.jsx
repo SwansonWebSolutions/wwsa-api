@@ -7,6 +7,7 @@ import CargoShip from '../images/cargo-ship.png';
 import ServiceCard from '../components/ServiceCard';
 import GlobeImage from '../images/globe.png';
 import Handshake from '../images/handshake.png';
+import ShippingVideo from '../videos/shipping.mp4';
 import EmailForm from '../components/EmailMessage';
 
 function Home() {
@@ -39,10 +40,35 @@ function Home() {
   }, []);
 
   return (
-    <div className='flex'>
+    <div className='flex flex-col'>
+      <div className="relative w-full overflow-hidden">
+        {/* Video */}
+        <video 
+          src={ShippingVideo} 
+          className="w-full h-[500px] object-cover" 
+          autoPlay 
+          loop 
+          muted
+        ></video>
+
+        {/* Overlay Container */}
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-xl md:text-4xl lg:text-4xl font-semibold text-white text-shadow animate-slideInLeft mb-4">
+            The Intelligence Behind Your Logistics Solutions <br /> & Simplifying The Logistics Process
+          </h1>
+          <Link
+            to="/contact"
+            className="border border-light-blue text-lg px-8 py-2 text-white text-shadow bg-light-blue font-semibold animate-slideInRight hover:bg-opacity-50 hover:border duration-300 ease-in"
+          >
+            <span>Request a Quote</span>
+          </Link>
+        </div>
+      </div>
+
+      <div className='flex'>
       {/* Left Sidebar (hidden on small screens) */}
-      <div className="bg-blue-200 md:w-1/4 hidden md:block">
-      {/* Sidebar content can go here */}
+      <div className="bg-navy-blue md:w-1/4 hidden md:block">
+        {/* Sidebar content can go here */}
       </div>
 
       {/* Center Column (Main content) */}
@@ -84,9 +110,11 @@ function Home() {
       </div>
 
       {/* Right Sidebar (hidden on small screens) */}
-      <div className="bg-blue-200 p-4 md:w-1/4 hidden md:block">
-      {/* Sidebar content can go here */}
+      <div className="bg-navy-blue p-4 md:w-1/4 hidden md:block">
+        {/* Sidebar content can go here */}
       </div>
+      </div>
+      
   </div>
   );
 }

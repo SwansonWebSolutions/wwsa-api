@@ -5,7 +5,7 @@ import EmailMessage from './EmailMessage'
 
 function Footer() {
   return (
-      <footer className="bg-navy-blue text-white py-2 text-center">
+      <footer className="bg-light-blue text-navy-blue py-2 text-center">
             <h5 className='text-xl font-light'>© 2024 World Wide Strategic Alliances</h5>
       </footer> 
   )

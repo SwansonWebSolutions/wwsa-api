@@ -9,7 +9,7 @@ module.exports = {
         'navy-blue': '#000030',
         'gray': '#888888',
         'light-gray': '#f5f5f5',
-        'light-blue': 'rgb(146,197,255)',
+        'light-blue': 'rgb(90,169,248)',
         'bright-yellow': 'rgb(255,255,0)',
       },
       textShadow: {
