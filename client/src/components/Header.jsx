@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Logo from '../images/wwsa.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();  // To track the current location/path
   const [isOpen, setIsOpen] = useState(false);
-  const [isSelected, setIsSelected] = useState('home');
 
   useEffect(() => {
-  }, [isSelected]); 
+    // Update selected link based on the current location.pathname
+    setIsSelected(location.pathname);
+  }, [location]); // Runs every time location changes
+
+  const [isSelected, setIsSelected] = useState(location.pathname); // Initialize with current pathname
+
   const goHome = () => {
     navigate('/');
   };
@@ -24,10 +28,7 @@ function Header() {
     setIsOpen(false);
   };
 
-  const handleSelected = (link) => {
-    setIsSelected(link);
-    if (window.innerWidth < 768) closeMenu(); // Close menu on mobile after selecting a link
-  };
+  const isActive = (path) => location.pathname === path;
 
   return (
     <header className="w-full md:px-[10%] flex flex-col justify-between items-center md:items-start bg-navy-blue text-white">
@@ -58,105 +59,96 @@ function Header() {
       >
         <Link
           to="/"
-          className={`text-white rounded-full px-4 py-2`}
-          onClick={() => handleSelected('home')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           HOME
         </Link>
         <Link
           to="/ltl"
-          className={`text-white rounded-full px-4 py-2`}
-          onClick={() => handleSelected('ltl')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/ltl') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           LTL FREIGHT SHIPPING
         </Link>
         <Link
           to="/truckload-service"
-          className={`text-white rounded-full px-4 py-2`}
-          onClick={() => handleSelected('truckload-service')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/truckload-service') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           TRUCKLOAD SERVICE
         </Link>
         <Link
           to="/trucking-solution"
-          className={`text-white rounded-full px-4 py-2`}
-          onClick={() => handleSelected('trucking-solution')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/trucking-solution') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           COMPLETE TRUCKING SOLUTION
         </Link>
         <Link
           to="/ecommerce"
-          className={`text-white rounded-full px-4 py-2 `}
-          onClick={() => handleSelected('ecommerce')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/ecommerce') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           E-COMMERCE
         </Link>
         <Link
           to="/about"
-          className={`text-white rounded-full px-4 py-`}
-          onClick={() => handleSelected('about')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/about') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           ABOUT
         </Link>
         <Link
           to="/contact"
-          className={`text-white rounded-full px-4 py-2 `}
-          onClick={() => handleSelected('contact')}
+          className={`text-white rounded-full px-4 py-2 ${isActive('/contact') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
+          onClick={() => closeMenu()}
         >
           CONTACT US
         </Link>
       </div>
 
       {/* Desktop Navigation Links */}
-      <div
-        className="hidden md:flex md:flex-row gap-8 items-center justify-start text-nowrap text-md w-full mb-2"
-      >
+      <div className="hidden md:flex md:flex-row gap-8 items-center justify-start text-nowrap text-md w-full mb-2">
         <Link
           to="/"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'home' ? ' border-b border-light-blue border-solid text-navy-blue animate-slideInRight duration-300 ease-in' : ''}`}
-          onClick={() => handleSelected('home')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           HOME
         </Link>
         <Link
           to="/ltl"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'ltl' ? ' border-b border-light-blue border-solid text-navy-blue' : ''}`}
-          onClick={() => handleSelected('ltl')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/ltl') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           LTL FREIGHT SHIPPING
         </Link>
         <Link
           to="/truckload-service"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'truckload-service' ? 'border-b border-light-blue border-solid text-navy-blue' : ''}`}
-          onClick={() => handleSelected('truckload-service')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/truckload-service') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           TRUCKLOAD SERVICE
         </Link>
         <Link
           to="/trucking-solution"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'trucking-solution' ? ' border-b border-light-blue border-solid text-navy-blue' : ''}`}
-          onClick={() => handleSelected('trucking-solution')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/trucking-solution') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           COMPLETE TRUCKING SOLUTION
         </Link>
         <Link
           to="/ecommerce"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'ecommerce' ? 'border-b border-light-blue border-solid text-navy-blue' : ''}`}
-          onClick={() => handleSelected('ecommerce')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/ecommerce') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           E-COMMERCE
         </Link>
         <Link
           to="/about"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'about' ? 'border-b border-light-blue border-solid text-navy-blue' : ''}`}
-          onClick={() => handleSelected('about')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/about') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           ABOUT
         </Link>
         <Link
           to="/contact"
-          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isSelected === 'contact' ? 'border-b border-light-blue border-solid text-navy-blue' : ''}`}
-          onClick={() => handleSelected('contact')}
+          className={`text-white p-2 hover:border-b border-light-blue border-solid ${isActive('/contact') ? 'border-b-4 border-light-blue text-navy-blue' : ''}`}
         >
           CONTACT US
         </Link>

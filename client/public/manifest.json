@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "poi.png",
+      "src": "wwsa.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "poi.png",
+      "src": "wwsa.png",
       "type": "image/png",
       "sizes": "512x512"
     }

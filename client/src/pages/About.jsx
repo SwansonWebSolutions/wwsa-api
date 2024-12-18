@@ -8,9 +8,9 @@ function About() {
 
   return (
     <div className='flex flex-col text-xl'>
-      <div className="w-full object-fill">
-        <img src={AmericanFlag} alt="" className="object-cover w-full h-full" />
-        <h1 className="absolute inset-0 text-5xl md:text-7xl lg:text-8xl text-white flex items-center justify-center text-shadow font-parisienne">
+      <div className="w-full object-fill overflow-hidden">
+        <img src={AmericanFlag} alt="" className="object-cover w-full" />
+        <h1 className="absolute inset-0 text-5xl text-white flex items-center justify-center text-shadow font-parisienne">
           We the people...
         </h1>
       </div>
@@ -66,7 +66,7 @@ function About() {
         <h2 className="text-3xl text-navy-blue font-semibold font-rubik text-center">Executive Team</h2>
         <div className='flex flex-col text-lg text-center'>
           <h3 className="text-2xl font-bold ">Mark Jackson</h3>
-          <span className=" italic">Founder and CEO</span>
+          <span className="italic">Founder and CEO</span>
           <a href="mailto:mark@wws-alliances.org">mark@wws-alliances.org</a>
         </div>
       
