@@ -28,8 +28,8 @@ const transporter = nodemailer.createTransport({
  router.post('/send-message', async (req, res) => {
     try {
         console.log("POST Email request: RECIEVED");
+
         const { fullname, phone, email, message } = req.body.formData; // Destructure and retrieve data from request body.
-        
         // Validate required fields.
         if (!fullname || !phone || !email || !message) {
             return res.status(400).json({ status: 'error', message: 'Missing required fields' });
@@ -42,7 +42,7 @@ const transporter = nodemailer.createTransport({
         const inquiryMailOptions = {
             from: process.env.SENDER_EMAIL, // Sender's email address.
             to: process.env.RECEIVER_EMAIL, // Recipient's name and email address.
-            subject: "New Client Inquiry", // Subject line.
+            subject: "New Message", // Subject line.
             text: msg // Plaintext body.
         };
 
@@ -56,12 +56,11 @@ const transporter = nodemailer.createTransport({
         const confirmationMailOptions = {
             from: `"World Wide Strategic Alliances" ${process.env.SENDER_EMAIL}`, // Sender's email address.
             to: email, // Recipient's name and email address.
-            subject: "Inquiry Confirmation", // Subject line.
-            text: `Hello ${fullname},\n\nThank you for your inquiry. We have recieved your inquiry and will get back to you as soon as possible.\n\nBest Regards,\n\nMark Jackson\n\nmark@wws-alliances.org\n\nWorld Wide Strategic Alliances` // Plaintext body.
+            subject: "WWSA - Message Confirmation", // Subject line.
+            text: `Hello ${fullname},\n\nThank you for your message. We have recieved your inquiry and will get back to you as soon as possible.\n\nBest Regards,\n\nMark Jackson\n\nmark@wws-alliances.org\n\nWorld Wide Strategic Alliances` // Plaintext body.
         };
         const confirmation = await transporter.sendMail(confirmationMailOptions);
         console.log('Email sent:', confirmation.response);
-        // Add error handling
 
         res.status(200).json({ status: 'success', message: 'Email sent successfully' });
     } catch (err) {

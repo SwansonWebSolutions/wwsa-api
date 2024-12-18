@@ -1,28 +1,50 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Spinner from './Loading';
 
 function EmailForm() {
   const [error, setError] = useState()
   const [success, setSuccess] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     fullname: '',
     email: '',
     phone: '',
     message: '',
   });
-  const [selectedOptions, setSelectedOptions] = useState([]); // State to store selected options
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const validateContent = () => {
+    const { fullname, email, phone, message } = formData;
+    if (!fullname || !email || !phone || !message) {
+      setError("Please fill in all required fields.");
+      return true;
+    } else {
+      setError(null);
+      return false;
+    }
+  };  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if(validateContent()) return;
     setError(null);
+    setLoading(true);
     // Handle form submission
     const response = await fetch("/api/send-message", {
       method: "POST",
       headers:{
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({formData, selectedOptions})
+      body: JSON.stringify({formData})
     })
 
     const data = await response.json();
@@ -34,6 +56,8 @@ function EmailForm() {
       return;
     }
 
+    setLoading(false);
+    setError(null);
     setSuccess("Thank you. Your message has been received.");
     // You can send the form data, including the selected options, to your server here
   };
@@ -58,29 +82,34 @@ function EmailForm() {
             </div>
           </div>
         </div>
+        {!loading ? (
+          !success ? (
+          <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-1/2'>
+            {error && <div className="text-red-500 text-sm">{error}</div>}
+            <section className='border-solid border-2 border-navy-blue '>
+              <input type="text" name="fullname" id="fullname" onChange={handleInputChange} className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Name'/>
+            </section>
 
-        <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-1/2'>
-          <section className='border-solid border-2 border-navy-blue '>
-            <input type="text" name="fullname" id="fullname" className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Name'/>
-          </section>
+            <section className='border-solid border-2 border-navy-blue '>
+              <input type="text" name="email" id="email" onChange={handleInputChange} className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Email'/>
+            </section>
 
-          <section className='border-solid border-2 border-navy-blue '>
-            <input type="text" name="email" id="email" className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Email'/>
-          </section>
+            <section className='border-solid border-2 border-navy-blue '>
+              <input type="text" name="phone" id="phone" onChange={handleInputChange} className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Telephone'/>
+            </section>
 
-          <section className='border-solid border-2 border-navy-blue '>
-            <input type="text" name="phone" id="phone" className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Telephone'/>
-          </section>
-
-          <section className='border-solid border-2 border-navy-blue flex flex-col w-full'>
-            <textarea name="message" id="message" rows="7" className="text-navy-blue text-lg font-light w-full p-2 pl-4" placeholder='Message'></textarea>
-          </section>
-          <section>
-            <button type="submit" className='border-solid border-2 border-navy-blue p-2 hover:bg-navy-blue hover:text-white duration-200 ease-in'>Send Message</button>
-          </section>
-        </form>
-      </div>
-      
+            <section className='border-solid border-2 border-navy-blue flex flex-col w-full'>
+              <textarea name="message" id="message" rows="7" onChange={handleInputChange} className="text-navy-blue text-lg font-light w-full p-2 pl-4" placeholder='Message'></textarea>
+            </section>
+            <section>
+              <button type="submit" className='border-solid border-2 border-navy-blue p-2 hover:bg-navy-blue hover:text-white duration-200 ease-in'>Send Message</button>
+            </section>
+          </form>
+          ) : (<div className='text-green-500 text-md'>{success}</div>)
+          ) : (
+            <Spinner message="Please wait while we send your message!"/>
+          )}
+        </div>
     </div>
   );
 }

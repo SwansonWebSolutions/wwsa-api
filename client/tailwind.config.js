@@ -53,7 +53,7 @@ module.exports = {
       boxShadow : {
         'black': '2px 10px 10px rgba(0, 0, 0, 0.75)',
         'full-black': '35px 35px 10px -5px rgba(0, 0, 0)',
-        'bottom-black': '0px 10px 10px -5px rgba(0, 0, 0)',
+        'bottom-black': '0px 2px 30px -5px rgba(0, 0, 0)',
       },
       fontFamily: {
         parisienne: ['"Parisienne"', 'cursive'],

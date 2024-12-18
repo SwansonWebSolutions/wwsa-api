@@ -1,43 +1,10 @@
-import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import Earth1280 from '../images/earth-1280.jpg'; // This is still referenced but will be used only within specific sections
-import Plane640 from '../images/plane-640.png';
-import CargoShip from '../images/cargo-ship.png';
-import ServiceCard from '../components/ServiceCard';
 import GlobeImage from '../images/globe.png';
 import Handshake from '../images/handshake.png';
 import ShippingVideo from '../videos/shipping.mp4';
 import EmailForm from '../components/EmailMessage';
 
 function Home() {
-  const screensize = window.screen.width < 768;
-  const sectionRef = useRef(null);
-  const [isInView, setIsInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.disconnect(); // Stop observing after the animation is triggered
-        }
-      },
-      {
-        threshold: 1, // Trigger when 10% of the element is in view
-      }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   return (
     <div className='flex flex-col'>
@@ -58,9 +25,9 @@ function Home() {
           </h1>
           <Link
             to="/contact"
-            className="border border-light-blue text-lg px-8 py-2 text-white text-shadow bg-light-blue font-semibold animate-slideInRight hover:bg-opacity-50 hover:border duration-300 ease-in"
+            className="border border-light-blue text-lg px-8 py-2 text-white text-shadow bg-light-blue font-light animate-slideInRight hover:bg-navy-blue hover:border duration-300 ease-in"
           >
-            <span>Request a Quote</span>
+            <span>Get a Quote</span>
           </Link>
         </div>
       </div>
