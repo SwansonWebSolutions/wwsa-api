@@ -68,8 +68,8 @@ function EmailForm() {
       <div className=' flex justify-center'>
         <h2 className='text-2xl text-navy-blue text-subtle-blue font-semibold font-rubik'>Contact Us</h2>
       </div>
-      <div className='flex px-16'>
-        <div className='flex flex-col gap-8 text-black w-1/2'>
+      <div className='flex flex-col-reverse gap-8 md:flex-row px-16'>
+        <div className='flex flex-col gap-8 text-black md:w-1/2'>
           <h2 className='text-md text-navy-blue font-extralight font-rubik'>Logistics & Distribution Services</h2>
           <div className='flex flex-col gap-4'>
             <div className='flex items-center gap-4'>
@@ -84,7 +84,7 @@ function EmailForm() {
         </div>
         {!loading ? (
           !success ? (
-          <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-1/2'>
+          <form onSubmit={handleSubmit} className='flex flex-col gap-2 md:w-1/2'>
             {error && <div className="text-red-500 text-sm">{error}</div>}
             <section className='border-solid border-2 border-navy-blue '>
               <input type="text" name="fullname" id="fullname" onChange={handleInputChange} className='text-navy-blue text-lg font-light w-full p-2 pl-4' placeholder='Name'/>

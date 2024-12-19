@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const emailRouter = require('./routes/email');
 const app = express();
 
 const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
 
 dotenv.config({ path: envFile });
+
+const emailRouter = require('./routes/email');
 
 const port = process.env.PORT;
 const domain = process.env.DOMAIN;

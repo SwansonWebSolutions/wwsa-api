@@ -40,11 +40,11 @@ function Home() {
 
       {/* Center Column (Main content) */}
       <div className="flex flex-col bg-white text-black md:2/4">
-          <div className="flex gap-16 justify-center text-gray bg-light-gray p-8">
-            <div className='border-solid border border-navy-blue w-1/4'>
+          <div className="flex flex-col md:flex-row gap-8 md:gap-16 justify-center items-center text-center md:text-start text-gray bg-light-gray p-8">
+            <div className='border-solid border border-navy-blue w-3/4 md:w-1/4'>
               <img src={GlobeImage} alt="" className='' />
             </div>
-            <div className='w-1/2 justify-center flex flex-col gap-4'>
+            <div className='md:w-1/2 justify-center flex flex-col gap-4'>
               <h2 className="text-2xl text-navy-blue text-subtle-blue font-semibold font-rubik">
                 Connecting Commerce
               </h2>
@@ -57,8 +57,8 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex gap-16 justify-center text-gray bg-white p-8">
-            <div className='w-1/2 justify-center flex flex-col gap-4'>
+          <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-16 justify-center items-center text-center md:text-start text-gray bg-white p-8">
+            <div className='md:w-1/2 justify-center flex flex-col gap-4'>
               <h2 className="text-2xl text-navy-blue text-subtle-blue font-semibold font-rubik">
                 We can meet your shipping needs
               </h2>
@@ -69,7 +69,7 @@ function Home() {
                 international presence.
               </p>
             </div>
-            <div className='border-solid border border-navy-blue w-1/4'>
+            <div className='border-solid border border-navy-blue w-3/4 md:w-1/4'>
               <img src={Handshake} alt="" className='' />
             </div>
           </div>
