@@ -1,6 +1,6 @@
 const express = require('express');
-const dotenv = require('dotenv');
 const cors = require('cors');
+const dotenv = require('dotenv');
 const emailRouter = require('./routes/email');
 const app = express();
 
@@ -21,6 +21,6 @@ app.use(cors(corsOptions));
 
 app.use('/api', emailRouter);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);  
+app.listen(port, domain, () => {
+    console.log(`Server is running on port ${domain}:${port}`);  
 });
