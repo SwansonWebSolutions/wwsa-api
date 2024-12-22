@@ -79,8 +79,8 @@ function Header() {
           TRUCKLOAD SERVICE
         </Link>
         <Link
-          to="/trucking-solution"
-          className={`text-white rounded-full px-4 py-2 ${isActive('/trucking-solution') ? 'border-b border-light-blue text-navy-blue' : ''}`}
+          to="/complete-trucking-solution"
+          className={`text-white rounded-full px-4 py-2 ${isActive('/complete-trucking-solution') ? 'border-b border-light-blue text-navy-blue' : ''}`}
           onClick={() => closeMenu()}
         >
           COMPLETE TRUCKING SOLUTION
@@ -129,8 +129,8 @@ function Header() {
     TRUCKLOAD SERVICE
   </Link>
   <Link
-    to="/trucking-solution"
-    className={`text-white p-2 hover:border-b border-light-blue border-solid whitespace-nowrap ${isActive('/trucking-solution') ? 'border-b border-light-blue text-navy-blue' : ''}`}
+    to="/complete-trucking-solution"
+    className={`text-white p-2 hover:border-b border-light-blue border-solid whitespace-nowrap ${isActive('/complete-trucking-solution') ? 'border-b border-light-blue text-navy-blue' : ''}`}
   >
     COMPLETE TRUCKING SOLUTION
   </Link>
