@@ -33,7 +33,7 @@ function Header() {
   return (
     <header className="lg:px-[10%] flex flex-col justify-between items-center lg:items-start bg-navy-blue text-white">
       {/* Logo and Home Button */}
-      <div className={`flex items-center justify-between shadow-bottom-black lg:shadow-none lg:border-none ${isOpen ? 'border-b-2 border-solid border-light-blue' : ''} w-full py-4`}>
+      <div className={`flex items-center justify-between shadow-bottom-black lg:shadow-none lg:border-none border-b-2 border-solid border-light-blue w-full py-4`}>
         <div onClick={goHome} className="flex items-center cursor-pointer">
           <img src={Logo} alt="Logo" className="w-[64px] h-[64px]" />
           <h1 className="text-xl lg:text-3xl text-white font-bold text-shadow-black ml-2">
@@ -54,8 +54,8 @@ function Header() {
       {/* Mobile Navigation Links */}
       <div
         className={`${
-          isOpen ? 'flex z-50 fixed bg-navy-blue top-[11.5%] w-full' : 'hidden'
-        } lg:hidden flex-col text-md gap-4 py-4 justify-center items-center transition-all duration-500 ease-in-out`}
+          isOpen ? 'flex z-20 bg-navy-blue top-[9%] w-full' : 'hidden'
+        } lg:hidden border-solid border-b-2 border-light-blue flex-col text-md gap-4 py-4 justify-center items-center transition-all duration-500 ease-in-out`}
       >
         <Link
           to="/"

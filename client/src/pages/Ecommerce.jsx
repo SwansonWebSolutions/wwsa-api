@@ -6,8 +6,16 @@ import SupportedIntegrations from '../components/ecommerce/SupportedIntegrations
 import CustomIntegrations from '../components/ecommerce/CustomIntegrations'
 import EmailMessage from '../components/EmailMessage'
 import WorkerImage from '../images/ecommerce-worker.jpg'
+import { Helmet } from 'react-helmet'
 function Ecommerce() {
   return (
+    <>
+    <Helmet>
+      <title>E-commerce - WWSA</title>
+      <meta name="description" content="Grow your ecommerce business globally with WWSA's flexible logistics solutions. Enjoy fast delivery, easy integrations, real-time tracking, and drop shipping options." />
+      <link rel="canonical" href="https://www.wws-alliances.org/ecommerce" />
+      <meta name="keywords" content="ecommerce, global ecommerce, commerce, shipping, logistics, international trade, freight solutions" />
+    </Helmet>
     <div className='bg-navy-blue'>
         <ServiceHeaderSection
             title="Ecommerce"
@@ -24,6 +32,7 @@ function Ecommerce() {
         <CustomIntegrations />
         <EmailMessage />
     </div>
+    </>
   )
 }
 

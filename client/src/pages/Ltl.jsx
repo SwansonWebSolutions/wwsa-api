@@ -5,8 +5,16 @@ import LTLInfo from '../components/ltl/LTLInfo'
 import FAQ from '../components/ltl/FAQ'
 import EmailMessage from '../components/EmailMessage'
 import FreightShipping from '../images/freight-shipping.jpg'
+import { Helmet } from 'react-helmet'
 function Ltl() {
   return (
+    <>
+    <Helmet>
+      <title>LTL Freight Shipping - WWSA</title>
+      <meta name="description" content="Grow your ecommerce business globally with WWSA's flexible logistics solutions. Enjoy fast delivery, easy integrations, real-time tracking, and drop shipping options." />
+      <link rel="canonical" href="https://www.wws-alliances.org/ltl" />
+      <meta name="keywords" content="ltl, freight shipping, commerce, shipping, logistics, international trade, freight solutions" />
+    </Helmet>
     <div>
         <ServiceHeaderSection
             title='LTL Freight Shipping'
@@ -22,6 +30,7 @@ function Ltl() {
         <FAQ />
         <EmailMessage />
     </div>
+    </>
   )
 }
 

@@ -3,10 +3,18 @@ import GlobeImage from '../images/globe.png';
 import Handshake from '../images/handshake.png';
 import ShippingVideo from '../videos/shipping.mp4';
 import EmailForm from '../components/EmailMessage';
+import { Helmet } from 'react-helmet';
 
 function Home() {
 
   return (
+    <>
+    <Helmet>
+      <title>World Wide Strategic Alliances</title>
+      <meta name="description" content="World Wide Strategic Alliances simplifies the complexities of logistics and distribution, so you can focus on growing your international presence." />
+      <link rel="canonical" href="https://www.wws-alliances.org" />
+      <meta name="keywords" content="shipping, logistics, global commerce, ecommerce, international trade, freight solutions" />
+    </Helmet>
     <div className='flex flex-col'>
       <div className="relative w-full overflow-hidden">
         {/* Video */}
@@ -62,11 +70,8 @@ function Home() {
               <h2 className="text-2xl text-navy-blue text-subtle-blue font-semibold font-rubik">
                 We can meet your shipping needs
               </h2>
-              <p className="block ">
-                In an increasingly interconnected world, is your business reaching its global potential? We
-                streamline international shipping rates, processes, and technology to help you effortlessly compete on
-                the world stage. Let us simplify the complexities of global logistics, so you can focus on growing your
-                international presence.
+              <p className="block">
+                Your shipping challenges deserve custom solutions tailored to your needs. Whether it’s optimizing routes, reducing costs, or ensuring timely deliveries, our expertise ensures your shipments arrive on time and in perfect condition. Let us help you build trust with your customers by providing reliable, scalable, and efficient logistics solutions.
               </p>
             </div>
             <div className='border-solid border border-navy-blue w-3/4 md:w-1/4'>
@@ -83,6 +88,7 @@ function Home() {
       </div>
       
   </div>
+  </>
   );
 }
 

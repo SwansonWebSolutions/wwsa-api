@@ -20,10 +20,10 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="ecommerce" element={<Ecommerce />} />
-        <Route path="complete-trucking-solution" element={<CompleteTruckingSolution />} />
-        <Route path="truckload-service" element={<TruckloadService />} />
-        <Route path="ltl" element={<Ltl />} />
+        <Route path="/ecommerce" element={<Ecommerce />} />
+        <Route path="/complete-trucking-solution" element={<CompleteTruckingSolution />} />
+        <Route path="/truckload-service" element={<TruckloadService />} />
+        <Route path="/ltl" element={<Ltl />} />
       </Routes>
     </Layout>
     </BrowserRouter>

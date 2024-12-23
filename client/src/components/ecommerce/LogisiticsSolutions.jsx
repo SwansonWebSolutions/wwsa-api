@@ -2,7 +2,7 @@ import React from 'react';
 
 const LogisticsSolutions = () => (
     <div className='bg-light-gray flex flex-col justify-center items-center py-10 px-[10%] shadow-lg'>
-        <h2 className='font-rubik text-4xl text-navy-blue font-semibold mb-4'>
+        <h2 className='font-rubik text-4xl text-navy-blue text-center lg:text-start lg font-semibold mb-4'>
             Flexible Logistics Solutions
         </h2>
         <p className='text-gray-700 text-lg mb-6 text-center'>

@@ -3,10 +3,18 @@ import SupplyChain from '../images/supply-chain.png'
 import LeadershipVision from '../images/leadership-vision.png'
 import TQM from '../images/tqm.png'
 import EmailMessage from '../components/EmailMessage'
+import { Helmet } from 'react-helmet'
 
 function About() {
 
   return (
+    <>
+    <Helmet>
+      <title>About - WWSA</title>
+      <meta name="description" content="Discover innovative logistics solutions with 15+ years of expertise in supply chain management, leadership, and total quality management. Enhance ROI, customer satisfaction, and competitive advantage with our dedicated team." />
+      <link rel="canonical" href="https://www.wws-alliances.org/about" />
+      <meta name="keywords" content="about, shipping, logistics, ecommerce, international trade, freight solutions" />
+    </Helmet>
     <div className='flex flex-col text-xl'>
       <div className="w-full object-fill overflow-hidden flex items-center justify-center">
         <h1 className="absolute text-5xl md:text-8xl text-white flex items-center justify-center text-shadow font-parisienne">
@@ -83,6 +91,7 @@ function About() {
 
       <EmailMessage />
     </div>
+    </>
   )
 }
 
