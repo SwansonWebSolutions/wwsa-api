@@ -1,10 +1,11 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Author Dylan Swanson, this code may not be distrubuted or changed without permission.",
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
+    "build": "npm ci",
     "dev": "cross-env NODE_ENV=development nodemon server.js"
   },
   "author": "Dylan Swanson",
